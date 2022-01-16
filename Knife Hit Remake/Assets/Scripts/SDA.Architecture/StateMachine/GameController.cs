@@ -1,18 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SDA.UI;
+using UnityEngine.Events;
+using SDA.Input;
 
 namespace SDA.Architecture
 {
     public class GameController : MonoBehaviour
     {
+        [SerializeField]
+        private MenuView menuView;
+
+        [SerializeField]
+        private GameView gameView;
+
+        private InputSystem inputSystem;
+
         private MenuState menuState;
+        private GameState gameState;
 
         private BaseState currentlyActiveState;
 
+        private UnityAction toGameStateTransition;
+
         private void Start()
         {
-            menuState = new MenuState();
+            toGameStateTransition = () => ChangeState(gameState);
+
+            inputSystem = new InputSystem();
+
+            menuState = new MenuState(toGameStateTransition, menuView);
+            gameState = new GameState(gameView, inputSystem);
 
             ChangeState(menuState);
         }
