@@ -1,0 +1,83 @@
+# =============== #
+# Unity generated #
+# =============== #
+/Knife Hit Remake/[Ll]ibrary/
+/Knife Hit Remake/[Tt]emp/
+/Knife Hit Remake/[Oo]bj/
+/Knife Hit Remake/[Bb]uild/
+/Knife Hit Remake/[Bb]uilds/
+/Knife Hit Remake/[Ll]ogs/
+/Knife Hit Remake/Assets/AssetStoreTools*
+/Knife Hit Remake/UnityPackageManager
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+/Knife Hit Remake/.consulo/
+/Knife Hit Remake/.vs/
+/Knife Hit Remake/ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+*.tmp
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.vscode
+# ====================== #
+# Gradle cache directory #
+# ====================== #
+/Knife Hit Remake/.gradle/
+# ============================= #
+# Unity3D generated meta files  #
+# ============================= #
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+# ======================================== #
+# Unity3D generated file on crash reports  #
+# ======================================== #
+sysinfo.txt
+*.stackdump
+# ======================================== #
+# Crashlytics generated file               #
+# ======================================== #
+crashlytics-build.properties
+# ==================== #
+# Builds               #
+# ==================== #
+*.apk
+*.unitypackage
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
+# =============== #
+#      Other      #
+# =============== #
+*.blend1
+*.orig
+*.orig.meta
+*.blend1.meta
+# =============== #
+#    Whiteboard   #
+# =============== #
+Knife Hit Remake.rar
+Knife Hit Remake.7z
+# =============== #
+#       Rider     #
+# =============== #
+/Knife Hit Remake/.idea/
