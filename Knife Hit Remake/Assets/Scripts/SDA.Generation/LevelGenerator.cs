@@ -26,15 +26,19 @@ namespace SDA.Generation
         [SerializeField]
         private Transform knifeRoot;
 
-        public void SpawnShield()
+        public BaseShield SpawnShield()
         {
             var shieldObj = Instantiate(shieldPrefab, shieldPos.position, shieldPos.rotation);
+
             shieldObj.transform.SetParent(shieldRoot);
+
+            return shieldObj;
         }
 
         public void SpawnKnife()
         {
             var knifeObj = Instantiate(knifePrefab, knifePos.position, knifePos.rotation);
+
             knifeObj.transform.SetParent(knifeRoot);
         }
     } 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7242938688818501717}
   - component: {fileID: 7242938688818501722}
   m_Layer: 0
-  m_Name: Shield
+  m_Name: SimpleShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,3 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763e50a4ababf2745bb737bec93afaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementScheme:
+  - angle: 180
+    time: 0.5
+  - angle: -15
+    time: 1
+  - angle: 360
+    time: 4
