@@ -4,6 +4,7 @@ using UnityEngine;
 using SDA.UI;
 using UnityEngine.Events;
 using SDA.Input;
+using SDA.Generation;
 
 namespace SDA.Architecture
 {
@@ -14,6 +15,9 @@ namespace SDA.Architecture
 
         [SerializeField]
         private GameView gameView;
+
+        [SerializeField]
+        private LevelGenerator levelGenearator;
 
         private InputSystem inputSystem;
 
@@ -31,7 +35,7 @@ namespace SDA.Architecture
             inputSystem = new InputSystem();
 
             menuState = new MenuState(toGameStateTransition, menuView);
-            gameState = new GameState(gameView, inputSystem);
+            gameState = new GameState(gameView, inputSystem, levelGenearator);
 
             ChangeState(menuState);
         }
