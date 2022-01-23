@@ -5,6 +5,7 @@ using SDA.UI;
 using UnityEngine.Events;
 using SDA.Input;
 using SDA.Generation;
+using SDA.CoreGameplay;
 
 namespace SDA.Architecture
 {
@@ -28,14 +29,17 @@ namespace SDA.Architecture
 
         private UnityAction toGameStateTransition;
 
+        private ShieldMovementController shieldMovementController;
+
         private void Start()
         {
             toGameStateTransition = () => ChangeState(gameState);
 
             inputSystem = new InputSystem();
+            shieldMovementController = new ShieldMovementController();
 
             menuState = new MenuState(toGameStateTransition, menuView);
-            gameState = new GameState(gameView, inputSystem, levelGenearator);
+            gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController);
 
             ChangeState(menuState);
         }
