@@ -15,7 +15,7 @@ namespace SDA.Generation
         public override void Initialize()
         {
             currentStep = 0;
-            var currentStepData = movementScheme[currentStep];
+            ShieldMovementStep currentStepData = movementScheme[currentStep];
 
             startTime = Time.time;
             duration = currentStepData.time;
@@ -26,7 +26,6 @@ namespace SDA.Generation
 
         public override void Rotate()
         {
-
             currentNormalizedTime = (Time.time - startTime) / duration;
 
             if (currentNormalizedTime >= 1f)
@@ -35,7 +34,7 @@ namespace SDA.Generation
                 if (currentStep == movementScheme.Length)
                     currentStep = 0;
 
-                var currentStepData = movementScheme[currentStep];
+                ShieldMovementStep currentStepData = movementScheme[currentStep];
 
                 startTime = Time.time;
                 duration = currentStepData.time;
@@ -44,7 +43,7 @@ namespace SDA.Generation
                 endAngle = startAngle + Vector3.forward * currentStepData.angle; // Vector3.forward to to samo co Vector3(0,0,1)
             }
 
-            var finalAngle = Vector3.Lerp(startAngle, endAngle, currentNormalizedTime);
+            Vector3 finalAngle = Vector3.Lerp(startAngle, endAngle, currentNormalizedTime); // Liniowa interpolacja miêdzy dwoma punktami startAngle i endAngle w jakimœ momencie currentNormalizedTime
             transform.rotation = Quaternion.Euler(finalAngle);
         }
     } 
