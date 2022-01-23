@@ -21,6 +21,8 @@ namespace SDA.Architecture
         private LevelGenerator levelGenearator;
 
         private InputSystem inputSystem;
+        private ShieldMovementController shieldMovementController;
+        private KnifeThrower knifeThrower;
 
         private MenuState menuState;
         private GameState gameState;
@@ -29,17 +31,16 @@ namespace SDA.Architecture
 
         private UnityAction toGameStateTransition;
 
-        private ShieldMovementController shieldMovementController;
-
         private void Start()
         {
             toGameStateTransition = () => ChangeState(gameState);
 
             inputSystem = new InputSystem();
             shieldMovementController = new ShieldMovementController();
+            knifeThrower = new KnifeThrower();
 
             menuState = new MenuState(toGameStateTransition, menuView);
-            gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController);
+            gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController, knifeThrower);
 
             ChangeState(menuState);
         }
