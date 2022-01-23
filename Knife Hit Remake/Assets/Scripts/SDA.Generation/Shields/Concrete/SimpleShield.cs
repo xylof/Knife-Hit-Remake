@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SDA.Generation
 {
@@ -12,8 +13,10 @@ namespace SDA.Generation
 
         private int currentStep;
 
-        public override void Initialize()
+        public override void Initialize(UnityAction onShieldHitCallback, UnityAction onWinCallback)
         {
+            base.Initialize(onShieldHitCallback, onWinCallback);
+
             currentStep = 0;
             ShieldMovementStep currentStepData = movementScheme[currentStep];
 

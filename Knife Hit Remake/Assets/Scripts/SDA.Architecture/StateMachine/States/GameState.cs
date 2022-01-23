@@ -30,13 +30,8 @@ namespace SDA.Architecture
             if (gameView != null)
                 gameView.ShowView();
 
-
-            BaseShield startShield = levelGenerator.SpawnShield();
-            shieldMovementController.InitializeShield(startShield);
-
-            Knife knife = levelGenerator.SpawnKnife();
-            knifeThrower.SetKnife(knife);
-
+            PrepareNewShield();
+            PrepareNewKnife();
             inputSystem.AddListener(knifeThrower.Throw);
         }
 
@@ -54,9 +49,16 @@ namespace SDA.Architecture
             inputSystem.RemoveAllListeners();
         }
 
-        private void PrintDebug()
+        private void PrepareNewKnife()
         {
-            Debug.Log("button");
+            Knife newKnife = levelGenerator.SpawnKnife();
+            knifeThrower.SetKnife(newKnife);
+        }
+
+        private void PrepareNewShield()
+        {
+            BaseShield newShield = levelGenerator.SpawnShield();
+            shieldMovementController.InitializeShield(newShield, PrepareNewKnife, PrepareNewShield);
         }
     } 
 }
