@@ -5,6 +5,8 @@ using SDA.UI;
 using SDA.Input;
 using SDA.Generation;
 using SDA.CoreGameplay;
+using UnityEngine.Events;
+using TMPro;
 
 namespace SDA.Architecture
 {
@@ -15,14 +17,16 @@ namespace SDA.Architecture
         private LevelGenerator levelGenerator;
         private ShieldMovementController shieldMovementController;
         private KnifeThrower knifeThrower;
+        private TextMeshProUGUI scoreInfo;
 
-        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower)
+        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower, TextMeshProUGUI scoreInfo)
         {
             this.gameView = gameView;
             this.inputSystem = inputSystem;
             this.levelGenerator = levelGenerator;
             this.shieldMovementController = shieldMovementController;
             this.knifeThrower = knifeThrower;
+            this.scoreInfo = scoreInfo;
         }
 
         public override void InitState()
@@ -33,6 +37,8 @@ namespace SDA.Architecture
             PrepareNewShield();
             PrepareNewKnife();
             inputSystem.AddListener(knifeThrower.Throw);
+
+            scoreInfo.text = "0";
         }
 
         public override void UpdateState()
@@ -58,7 +64,12 @@ namespace SDA.Architecture
         private void PrepareNewShield()
         {
             BaseShield newShield = levelGenerator.SpawnShield();
-            shieldMovementController.InitializeShield(newShield, PrepareNewKnife, PrepareNewShield);
+            shieldMovementController.InitializeShield(newShield, (UnityAction)PrepareNewKnife + IncrementScore, PrepareNewShield);
+        }
+
+        private void IncrementScore()
+        {
+            scoreInfo.text = (int.Parse(scoreInfo.text) + 1).ToString();
         }
     } 
 }

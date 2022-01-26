@@ -170,6 +170,7 @@ MonoBehaviour:
   menuView: {fileID: 823809368}
   gameView: {fileID: 1178859236}
   levelGenearator: {fileID: 1815145285}
+  scoreInfo: {fileID: 2047763171}
 --- !u!1 &46519324
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,8 +255,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -597,8 +598,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 130
+  m_fontSizeBase: 130
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2564,7 +2565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &823809365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3150,7 +3151,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: b6dfc7521f4506e4099e23a93f9c36ca, type: 3}
-  m_Color: {r: 0.9716981, g: 0.7939968, b: 0.2704254, a: 0.49019608}
+  m_Color: {r: 0.9716981, g: 0.7939968, b: 0.2704254, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4978,7 +4979,7 @@ GameObject:
   - component: {fileID: 2047763172}
   - component: {fileID: 2047763171}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ScoreInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5023,7 +5024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 128
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 07424572fa3d5024da43bafedfa3b6d9, type: 2}
   m_sharedMaterial: {fileID: -7029304173650072012, guid: 07424572fa3d5024da43bafedfa3b6d9, type: 2}
@@ -5050,8 +5051,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
