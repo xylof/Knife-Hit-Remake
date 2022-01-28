@@ -19,6 +19,9 @@ namespace SDA.Architecture
         private GameView gameView;
 
         [SerializeField]
+        private SettingsView settingsView;
+
+        [SerializeField]
         private LevelGenerator levelGenearator;
 
         [SerializeField]
@@ -30,21 +33,27 @@ namespace SDA.Architecture
 
         private MenuState menuState;
         private GameState gameState;
+        private SettingsState settingsState;
 
         private BaseState currentlyActiveState;
 
         private UnityAction toGameStateTransition;
+        private UnityAction toSettingsStateTransition;
+        private UnityAction toMenuStateTransition;
 
         private void Start()
         {
             toGameStateTransition = () => ChangeState(gameState);
+            toSettingsStateTransition = () => ChangeState(settingsState);
+            toMenuStateTransition = () => ChangeState(menuState);
 
             inputSystem = new InputSystem();
             shieldMovementController = new ShieldMovementController();
             knifeThrower = new KnifeThrower();
 
-            menuState = new MenuState(toGameStateTransition, menuView);
+            menuState = new MenuState(toGameStateTransition, toSettingsStateTransition, menuView);
             gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController, knifeThrower, scoreInfo);
+            settingsState = new SettingsState(toMenuStateTransition, settingsView);
 
             ChangeState(menuState);
         }

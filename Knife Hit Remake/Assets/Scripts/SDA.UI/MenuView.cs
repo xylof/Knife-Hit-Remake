@@ -10,6 +10,10 @@ namespace SDA.UI
         [SerializeField]
         private Button playButton;
 
+        [SerializeField]
+        private Button settingsButton;
+
         public Button PlayButton => playButton; // Ten zapis dzia³a tak samo jak getter
+        public Button SettingsButton => settingsButton;
     } 
 }
