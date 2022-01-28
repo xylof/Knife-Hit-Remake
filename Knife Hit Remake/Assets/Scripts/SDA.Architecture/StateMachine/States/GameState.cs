@@ -17,16 +17,14 @@ namespace SDA.Architecture
         private LevelGenerator levelGenerator;
         private ShieldMovementController shieldMovementController;
         private KnifeThrower knifeThrower;
-        private TextMeshProUGUI scoreInfo;
 
-        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower, TextMeshProUGUI scoreInfo)
+        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower)
         {
             this.gameView = gameView;
             this.inputSystem = inputSystem;
             this.levelGenerator = levelGenerator;
             this.shieldMovementController = shieldMovementController;
             this.knifeThrower = knifeThrower;
-            this.scoreInfo = scoreInfo;
         }
 
         public override void InitState()
@@ -38,7 +36,7 @@ namespace SDA.Architecture
             PrepareNewKnife();
             inputSystem.AddListener(knifeThrower.Throw);
 
-            scoreInfo.text = "0";
+            gameView.ScoreInfo.text = "0";
         }
 
         public override void UpdateState()
@@ -69,7 +67,7 @@ namespace SDA.Architecture
 
         private void IncrementScore()
         {
-            scoreInfo.text = (int.Parse(scoreInfo.text) + 1).ToString();
+            gameView.ScoreInfo.text = (int.Parse(gameView.ScoreInfo.text) + 1).ToString();
         }
     } 
 }

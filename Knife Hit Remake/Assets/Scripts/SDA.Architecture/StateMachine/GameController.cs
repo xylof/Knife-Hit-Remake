@@ -6,7 +6,6 @@ using UnityEngine.Events;
 using SDA.Input;
 using SDA.Generation;
 using SDA.CoreGameplay;
-using TMPro;
 
 namespace SDA.Architecture
 {
@@ -22,10 +21,7 @@ namespace SDA.Architecture
         private SettingsView settingsView;
 
         [SerializeField]
-        private LevelGenerator levelGenearator;
-
-        [SerializeField]
-        private TextMeshProUGUI scoreInfo;
+        private LevelGenerator levelGenearator;      
 
         private InputSystem inputSystem;
         private ShieldMovementController shieldMovementController;
@@ -52,7 +48,7 @@ namespace SDA.Architecture
             knifeThrower = new KnifeThrower();
 
             menuState = new MenuState(toGameStateTransition, toSettingsStateTransition, menuView);
-            gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController, knifeThrower, scoreInfo);
+            gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController, knifeThrower);
             settingsState = new SettingsState(toMenuStateTransition, settingsView);
 
             ChangeState(menuState);
