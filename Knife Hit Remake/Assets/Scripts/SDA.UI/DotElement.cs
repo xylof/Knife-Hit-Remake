@@ -6,19 +6,19 @@ using DG.Tweening;
 
 namespace SDA.UI
 {
-    public class KnifeElement : MonoBehaviour
+    public class DotElement : MonoBehaviour
     {
         [SerializeField]
-        private Image image;
+        private Image dotImage;
 
         public void MarkAsUnlocked()
         {
-            image.color = Color.white;
+            dotImage.DOColor(Color.green, 0.7f);
         }
 
         public void MarkAsLocked()
         {
-            image.DOColor(Color.black, 0.3f); // Zmiana koloru bêdzie trwa³a 0,3 sekundy
+            dotImage.color = Color.white;
         }
     } 
 }

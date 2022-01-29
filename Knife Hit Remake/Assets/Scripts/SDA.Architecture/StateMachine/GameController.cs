@@ -22,37 +22,46 @@ namespace SDA.Architecture
         private SettingsView settingsView;
 
         [SerializeField]
+        private LoseView loseView;
+
+        [SerializeField]
         private LevelGenerator levelGenearator;      
 
         private InputSystem inputSystem;
         private ShieldMovementController shieldMovementController;
         private KnifeThrower knifeThrower;
         private ScoreSystem scoreSystem;
+        private StageController stageController;
 
         private MenuState menuState;
         private GameState gameState;
         private SettingsState settingsState;
+        private LoseState loseState;
 
         private BaseState currentlyActiveState;
 
         private UnityAction toGameStateTransition;
         private UnityAction toSettingsStateTransition;
         private UnityAction toMenuStateTransition;
+        private UnityAction toLoseStatetransition;
 
         private void Start()
         {
             toGameStateTransition = () => ChangeState(gameState);
             toSettingsStateTransition = () => ChangeState(settingsState);
             toMenuStateTransition = () => ChangeState(menuState);
+            toLoseStatetransition = () => ChangeState(loseState);
 
             inputSystem = new InputSystem();
             shieldMovementController = new ShieldMovementController();
             knifeThrower = new KnifeThrower();
             scoreSystem = new ScoreSystem();
+            stageController = new StageController();
 
             menuState = new MenuState(toGameStateTransition, toSettingsStateTransition, menuView);
-            gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController, knifeThrower, scoreSystem);
+            gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController, knifeThrower, scoreSystem, stageController, toLoseStatetransition);
             settingsState = new SettingsState(toMenuStateTransition, settingsView);
+            loseState = new LoseState(loseView, toMenuStateTransition, toGameStateTransition, scoreSystem, stageController);
 
             ChangeState(menuState);
         }

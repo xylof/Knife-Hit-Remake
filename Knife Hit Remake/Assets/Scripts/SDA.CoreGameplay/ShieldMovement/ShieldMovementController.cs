@@ -19,6 +19,12 @@ namespace SDA.CoreGameplay
             currentlyActiveShield.Initialize(onShieldHitCallback, onWinCallback);
         }
 
+        public void DisposeShield()
+        {
+            if (currentlyActiveShield != null)
+                currentlyActiveShield.Dispose();
+        }
+
         public void UpdateController()
         {
             if (currentlyActiveShield != null)
