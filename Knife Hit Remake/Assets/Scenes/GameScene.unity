@@ -474,7 +474,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 150}
+  m_SizeDelta: {x: 1000, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &123919610
 MonoBehaviour:
@@ -1289,6 +1289,7 @@ GameObject:
   - component: {fileID: 576921775}
   - component: {fileID: 576921777}
   - component: {fileID: 576921776}
+  - component: {fileID: 576921778}
   m_Layer: 5
   m_Name: Dot_4
   m_TagString: Untagged
@@ -1335,7 +1336,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9bb665aaae5741d4fb4690f8958c03de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5308a069f4bb0648a034ca3f5238f57, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1353,6 +1354,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576921774}
   m_CullTransparentMesh: 1
+--- !u!114 &576921778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576921774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11ee6db01190374c9e92e65e4e25dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotImage: {fileID: 576921776}
 --- !u!1 &584338775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,6 +2270,7 @@ GameObject:
   - component: {fileID: 836080244}
   - component: {fileID: 836080246}
   - component: {fileID: 836080245}
+  - component: {fileID: 836080247}
   m_Layer: 5
   m_Name: Dot_1
   m_TagString: Untagged
@@ -2302,7 +2317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9bb665aaae5741d4fb4690f8958c03de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79e5e56908a984140bb7441ac1f8c84b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2320,6 +2335,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836080243}
   m_CullTransparentMesh: 1
+--- !u!114 &836080247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836080243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11ee6db01190374c9e92e65e4e25dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotImage: {fileID: 836080245}
 --- !u!1 &842071592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,6 +2542,7 @@ GameObject:
   - component: {fileID: 854190883}
   - component: {fileID: 854190885}
   - component: {fileID: 854190884}
+  - component: {fileID: 854190886}
   m_Layer: 5
   m_Name: Dot_3
   m_TagString: Untagged
@@ -2560,7 +2589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9bb665aaae5741d4fb4690f8958c03de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7ebbd4d36163b143b54d31cf2e12527, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2578,6 +2607,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854190882}
   m_CullTransparentMesh: 1
+--- !u!114 &854190886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854190882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11ee6db01190374c9e92e65e4e25dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotImage: {fileID: 854190884}
 --- !u!1 &939289075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,6 +3179,13 @@ MonoBehaviour:
   scoreInfo: {fileID: 2047763171}
   knifeElementPrefab: {fileID: 1494765924179954679, guid: 7a5fdfe9449ac93428b6b47321e2e3f0, type: 3}
   knifeElementContent: {fileID: 695512620}
+  elements:
+  - {fileID: 836080247}
+  - {fileID: 2006926979}
+  - {fileID: 854190886}
+  - {fileID: 576921778}
+  - {fileID: 1463019853}
+  stageText: {fileID: 123919610}
 --- !u!1 &1296635908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3299,6 +3348,7 @@ GameObject:
   - component: {fileID: 1463019850}
   - component: {fileID: 1463019852}
   - component: {fileID: 1463019851}
+  - component: {fileID: 1463019853}
   m_Layer: 5
   m_Name: Dot_Boss
   m_TagString: Untagged
@@ -3363,6 +3413,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463019849}
   m_CullTransparentMesh: 1
+--- !u!114 &1463019853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463019849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11ee6db01190374c9e92e65e4e25dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotImage: {fileID: 1463019851}
 --- !u!1 &1509096316
 GameObject:
   m_ObjectHideFlags: 0
@@ -4227,7 +4290,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldPos: {fileID: 842071593}
-  shieldPrefab: {fileID: 7242938688818501722, guid: 32d68f6f8ce76f64b93d0f507afa6bd6, type: 3}
+  simpleShields:
+  - {fileID: 7242938688818501722, guid: 32d68f6f8ce76f64b93d0f507afa6bd6, type: 3}
+  - {fileID: 7242938688818501722, guid: 946263b9defb88245b617c42614c9635, type: 3}
+  - {fileID: 7242938688818501722, guid: 7d45ce77fa46c80469b7c64028d056f5, type: 3}
+  - {fileID: 7242938688818501722, guid: 9d4dde1d1c3d19a41871961c200e4afe, type: 3}
+  - {fileID: 7242938688818501722, guid: d0ab408ac91fa754aa33d5e4a5b93a10, type: 3}
+  - {fileID: 7242938688818501722, guid: 975fe956abbaac943b2a2b407f77f592, type: 3}
+  bossShields:
+  - {fileID: 7242938688818501722, guid: 497f8c158af75984b90c1ad494cc62e1, type: 3}
+  - {fileID: 7242938688818501722, guid: 02e6e13e180c18946ae78737563724d4, type: 3}
   shieldRoot: {fileID: 128085647}
   knifePos: {fileID: 1623524986}
   knifePrefab: {fileID: -1351821720128268525, guid: 3fecc9a9e1d683a42b0423cd51b7bcad, type: 3}
@@ -4586,6 +4658,7 @@ GameObject:
   - component: {fileID: 2006926976}
   - component: {fileID: 2006926978}
   - component: {fileID: 2006926977}
+  - component: {fileID: 2006926979}
   m_Layer: 5
   m_Name: Dot_2
   m_TagString: Untagged
@@ -4632,7 +4705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9bb665aaae5741d4fb4690f8958c03de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc3d79f72df16604c8ce08c1953dd1ee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4650,6 +4723,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006926975}
   m_CullTransparentMesh: 1
+--- !u!114 &2006926979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006926975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11ee6db01190374c9e92e65e4e25dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotImage: {fileID: 2006926977}
 --- !u!1 &2047763169
 GameObject:
   m_ObjectHideFlags: 0
