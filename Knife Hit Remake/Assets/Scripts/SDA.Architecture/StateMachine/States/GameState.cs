@@ -61,16 +61,18 @@ namespace SDA.Architecture
             knifeThrower.SetKnife(newKnife);
         }
 
-        private void PrepareNewShield()
-        {
-            BaseShield newShield = levelGenerator.SpawnShield();
-            shieldMovementController.InitializeShield(newShield, (UnityAction)PrepareNewKnife + IncrementScore, PrepareNewShield);
-        }
-
         private void IncrementScore()
         {
             scoreSystem.IncreasePoints();
             gameView.UpdateScore(scoreSystem.CurrentPoints);
+        }
+
+        private void PrepareNewShield()
+        {
+            BaseShield newShield = levelGenerator.SpawnShield();
+            shieldMovementController.InitializeShield(newShield, (UnityAction)PrepareNewKnife + IncrementScore + gameView.DecreaseAmmo, PrepareNewShield);
+
+            gameView.SpawnAmmo(newShield.KnivesToWin);
         }
     } 
 }

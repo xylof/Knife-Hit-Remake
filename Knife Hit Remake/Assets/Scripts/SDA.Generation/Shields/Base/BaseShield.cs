@@ -13,6 +13,8 @@ namespace SDA.Generation
         [SerializeField]
         private int knivesToWin;
 
+        public int KnivesToWin => knivesToWin;
+
         [SerializeField]
         protected ShieldMovementStep[] movementScheme;
 
