@@ -52,6 +52,7 @@ namespace SDA.Generation
             knife.Rigidbody2D.isKinematic = true; // tryb Kinematic powoduje, ¿e inne elementy uderzaj¹ce w nó¿ nie mog¹ go ruszyæ
             knife.transform.position = new Vector3(0f, 0.1f, 0f);
             knivesInShield.Add(knife);
+            knife.DeInit();
             knife.transform.SetParent(this.transform);
 
             onShieldHit.Invoke();

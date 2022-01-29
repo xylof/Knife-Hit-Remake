@@ -8,6 +8,7 @@ using SDA.CoreGameplay;
 using SDA.Points;
 using UnityEngine.Events;
 using TMPro;
+using DG.Tweening;
 
 namespace SDA.Architecture
 {
@@ -21,7 +22,9 @@ namespace SDA.Architecture
         private ScoreSystem scoreSystem;
         private StageController stageController;
 
-        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower, ScoreSystem scoreSystem, StageController stageController)
+        private UnityAction toLoseStateTransition;
+
+        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower, ScoreSystem scoreSystem, StageController stageController, UnityAction toLoseStateTransition)
         {
             this.gameView = gameView;
             this.inputSystem = inputSystem;
@@ -30,6 +33,7 @@ namespace SDA.Architecture
             this.knifeThrower = knifeThrower;
             this.scoreSystem = scoreSystem;
             this.stageController = stageController;
+            this.toLoseStateTransition = toLoseStateTransition;
         }
 
         public override void InitState()
@@ -55,12 +59,14 @@ namespace SDA.Architecture
             if (gameView != null)
                 gameView.HideView();
 
+            shieldMovementController.DisposeShield();
             inputSystem.RemoveAllListeners();
         }
 
         private void PrepareNewKnife()
         {
             Knife newKnife = levelGenerator.SpawnKnife();
+            newKnife.InitKnife(() => LoseGame(newKnife));
             knifeThrower.SetKnife(newKnife);
         }
 
@@ -80,5 +86,25 @@ namespace SDA.Architecture
             gameView.SpawnAmmo(newShield.KnivesToWin);
             gameView.UpdateStage(stageController.CurrentStage);
         }
-    } 
+
+        private void LoseGame(Knife lastKnife)
+        {
+            inputSystem.RemoveAllListeners();
+
+            lastKnife.Rigidbody2D.gravityScale = 1f;
+            lastKnife.Rigidbody2D.freezeRotation = false;
+            lastKnife.Rigidbody2D.AddTorque(5f, ForceMode2D.Impulse); // Nadajemy rotacjê no¿owi
+
+            var loseSequence = DOTween.Sequence();
+            loseSequence
+                .SetDelay(1f)
+                .OnComplete(() => DestroyKnifeAndProceed(lastKnife));       
+        }
+
+        private void DestroyKnifeAndProceed(Knife lastKnife)
+        {
+            lastKnife.DestroyKnife();
+            toLoseStateTransition.Invoke();
+        }
+    }
 }
