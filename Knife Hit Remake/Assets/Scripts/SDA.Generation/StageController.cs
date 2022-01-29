@@ -13,7 +13,8 @@ namespace SDA.Generation
     {
         private const int BOSS_PERIOD = 5;
         private int currentStage;
-        public int CurrentStage => currentStage % BOSS_PERIOD;
+        public int CurrentStageModulo => currentStage % BOSS_PERIOD;
+        public int CurrentStage => currentStage;
 
         public void InitController()
         {

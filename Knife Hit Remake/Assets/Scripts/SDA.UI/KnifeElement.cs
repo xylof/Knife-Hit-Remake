@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace SDA.UI
 {
@@ -17,7 +18,7 @@ namespace SDA.UI
 
         public void MarkAsLocked()
         {
-            image.color = Color.black;
+            image.DOColor(Color.black, 0.3f); // Zmiana koloru bêdzie trwa³a 0,3 sekundy
         }
     } 
 }

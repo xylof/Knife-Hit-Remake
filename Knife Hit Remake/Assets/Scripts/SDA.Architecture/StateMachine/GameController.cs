@@ -61,7 +61,7 @@ namespace SDA.Architecture
             menuState = new MenuState(toGameStateTransition, toSettingsStateTransition, menuView);
             gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController, knifeThrower, scoreSystem, stageController, toLoseStatetransition);
             settingsState = new SettingsState(toMenuStateTransition, settingsView);
-            loseState = new LoseState(loseView, toMenuStateTransition, toGameStateTransition);
+            loseState = new LoseState(loseView, toMenuStateTransition, toGameStateTransition, scoreSystem, stageController);
 
             ChangeState(menuState);
         }

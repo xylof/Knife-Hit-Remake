@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763e50a4ababf2745bb737bec93afaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knivesToWin: 3
+  knivesToWin: 4
   movementScheme:
   - angle: 180
     time: 0.5

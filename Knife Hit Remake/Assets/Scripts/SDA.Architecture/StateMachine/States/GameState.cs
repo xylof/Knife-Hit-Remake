@@ -84,7 +84,7 @@ namespace SDA.Architecture
             shieldMovementController.InitializeShield(newShield, (UnityAction)PrepareNewKnife + IncrementScore + gameView.DecreaseAmmo, PrepareNewShield);
 
             gameView.SpawnAmmo(newShield.KnivesToWin);
-            gameView.UpdateStage(stageController.CurrentStage);
+            gameView.UpdateStage(stageController.CurrentStageModulo);
         }
 
         private void LoseGame(Knife lastKnife)
