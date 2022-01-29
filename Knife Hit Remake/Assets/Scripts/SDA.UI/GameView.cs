@@ -10,6 +10,11 @@ namespace SDA.UI
         [SerializeField]
         private TextMeshProUGUI scoreInfo;
 
-        public TextMeshProUGUI ScoreInfo => scoreInfo;
+        //public TextMeshProUGUI ScoreInfo => scoreInfo;
+
+        public void UpdateScore(int points)
+        {
+            scoreInfo.text = points.ToString();
+        }
     } 
 }
