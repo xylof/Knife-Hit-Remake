@@ -19,8 +19,9 @@ namespace SDA.Architecture
         private ShieldMovementController shieldMovementController;
         private KnifeThrower knifeThrower;
         private ScoreSystem scoreSystem;
+        private StageController stageController;
 
-        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower, ScoreSystem scoreSystem)
+        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower, ScoreSystem scoreSystem, StageController stageController)
         {
             this.gameView = gameView;
             this.inputSystem = inputSystem;
@@ -28,6 +29,7 @@ namespace SDA.Architecture
             this.shieldMovementController = shieldMovementController;
             this.knifeThrower = knifeThrower;
             this.scoreSystem = scoreSystem;
+            this.stageController = stageController;
         }
 
         public override void InitState()
@@ -36,6 +38,7 @@ namespace SDA.Architecture
                 gameView.ShowView();
 
             scoreSystem.InitSystem();
+            stageController.InitController();
             PrepareNewShield();
             PrepareNewKnife();
             inputSystem.AddListener(knifeThrower.Throw);
@@ -69,10 +72,13 @@ namespace SDA.Architecture
 
         private void PrepareNewShield()
         {
-            BaseShield newShield = levelGenerator.SpawnShield();
+            StageType nextStageType = stageController.NextStage();
+            BaseShield newShield = levelGenerator.SpawnShield(nextStageType);
+
             shieldMovementController.InitializeShield(newShield, (UnityAction)PrepareNewKnife + IncrementScore + gameView.DecreaseAmmo, PrepareNewShield);
 
             gameView.SpawnAmmo(newShield.KnivesToWin);
+            gameView.UpdateStage(stageController.CurrentStage);
         }
     } 
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8130867120664172144}
   - component: {fileID: -2870652584619233273}
   m_Layer: 8
-  m_Name: SimpleShield
+  m_Name: SimpleShield_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -28,6 +28,7 @@ namespace SDA.Architecture
         private ShieldMovementController shieldMovementController;
         private KnifeThrower knifeThrower;
         private ScoreSystem scoreSystem;
+        private StageController stageController;
 
         private MenuState menuState;
         private GameState gameState;
@@ -49,9 +50,10 @@ namespace SDA.Architecture
             shieldMovementController = new ShieldMovementController();
             knifeThrower = new KnifeThrower();
             scoreSystem = new ScoreSystem();
+            stageController = new StageController();
 
             menuState = new MenuState(toGameStateTransition, toSettingsStateTransition, menuView);
-            gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController, knifeThrower, scoreSystem);
+            gameState = new GameState(gameView, inputSystem, levelGenearator, shieldMovementController, knifeThrower, scoreSystem, stageController);
             settingsState = new SettingsState(toMenuStateTransition, settingsView);
 
             ChangeState(menuState);
