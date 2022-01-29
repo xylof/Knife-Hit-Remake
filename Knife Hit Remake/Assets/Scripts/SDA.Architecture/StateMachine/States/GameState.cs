@@ -5,6 +5,9 @@ using SDA.UI;
 using SDA.Input;
 using SDA.Generation;
 using SDA.CoreGameplay;
+using SDA.Points;
+using UnityEngine.Events;
+using TMPro;
 
 namespace SDA.Architecture
 {
@@ -15,14 +18,16 @@ namespace SDA.Architecture
         private LevelGenerator levelGenerator;
         private ShieldMovementController shieldMovementController;
         private KnifeThrower knifeThrower;
+        private ScoreSystem scoreSystem;
 
-        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower)
+        public GameState(GameView gameView, InputSystem inputSystem, LevelGenerator levelGenerator, ShieldMovementController shieldMovementController, KnifeThrower knifeThrower, ScoreSystem scoreSystem)
         {
             this.gameView = gameView;
             this.inputSystem = inputSystem;
             this.levelGenerator = levelGenerator;
             this.shieldMovementController = shieldMovementController;
             this.knifeThrower = knifeThrower;
+            this.scoreSystem = scoreSystem;
         }
 
         public override void InitState()
@@ -30,6 +35,7 @@ namespace SDA.Architecture
             if (gameView != null)
                 gameView.ShowView();
 
+            scoreSystem.InitSystem();
             PrepareNewShield();
             PrepareNewKnife();
             inputSystem.AddListener(knifeThrower.Throw);
@@ -55,10 +61,18 @@ namespace SDA.Architecture
             knifeThrower.SetKnife(newKnife);
         }
 
+        private void IncrementScore()
+        {
+            scoreSystem.IncreasePoints();
+            gameView.UpdateScore(scoreSystem.CurrentPoints);
+        }
+
         private void PrepareNewShield()
         {
             BaseShield newShield = levelGenerator.SpawnShield();
-            shieldMovementController.InitializeShield(newShield, PrepareNewKnife, PrepareNewShield);
+            shieldMovementController.InitializeShield(newShield, (UnityAction)PrepareNewKnife + IncrementScore + gameView.DecreaseAmmo, PrepareNewShield);
+
+            gameView.SpawnAmmo(newShield.KnivesToWin);
         }
     } 
 }

@@ -13,6 +13,8 @@ namespace SDA.Generation
         [SerializeField]
         private int knivesToWin;
 
+        public int KnivesToWin => knivesToWin;
+
         [SerializeField]
         protected ShieldMovementStep[] movementScheme;
 
@@ -46,8 +48,8 @@ namespace SDA.Generation
         {
             Knife knife = other.GetComponentInParent<Knife>();
             knife.Rigidbody2D.velocity = Vector2.zero;
-            knife.transform.rotation = Quaternion.identity; // Byæ mo¿e niepotrzebne, Quaternion.identity to wyzerowana rotacja dla Quaterniona
-            knife.Rigidbody2D.isKinematic = true; // Inne elementy uderzaj¹ce w nó¿ nie mog¹ go ruszyæ
+            //knife.transform.rotation = Quaternion.identity; // Byæ mo¿e niepotrzebne, Quaternion.identity to wyzerowana rotacja dla Quaterniona
+            knife.Rigidbody2D.isKinematic = true; // tryb Kinematic powoduje, ¿e inne elementy uderzaj¹ce w nó¿ nie mog¹ go ruszyæ
             knife.transform.position = new Vector3(0f, 0.1f, 0f);
             knivesInShield.Add(knife);
             knife.transform.SetParent(this.transform);
