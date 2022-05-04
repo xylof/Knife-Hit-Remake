@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +23,7 @@ namespace SDA.UI
         public void UpdatePointsAndStage(int points, int stage)
         {
             stageText.text = $"STAGE {stage}";
-            pointsText.text = points.ToString();
+            pointsText.text = $"Score: {points.ToString()}";
         }
     } 
 }
